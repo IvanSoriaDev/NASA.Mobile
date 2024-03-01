@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NASA.Mobile.Services.HttpService
+﻿namespace NASA.Mobile.Services
 {
     public interface IHttpService
     {
+        Task<T> GetAsync<T>(string endpoint, Dictionary<string, string>? headers = null);
+        Task<T> PostAsync<T>(string endpoint, object data, Dictionary<string, string>? headers = null);
+        Task<T> PutAsync<T>(string endpoint, object data, Dictionary<string, string>? headers);
+        Task<T> DeleteAsync<T>(string endpoint, object data, Dictionary<string, string>? headers);
+        Task<T> PatchAsync<T>(string endpoint, object data, Dictionary<string, string>? headers);
     }
 }

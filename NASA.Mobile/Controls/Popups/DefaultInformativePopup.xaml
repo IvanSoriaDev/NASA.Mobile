@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopups:PopupPage
+    x:Class="NASA.Mobile.Controls.Popups.DefaultInformativePopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:mopupsanim="clr-namespace:Mopups.Animations;assembly=Mopups"
+    CloseWhenBackgroundIsClicked="True">
+    <VerticalStackLayout>
+        <Label x:Name="TitleLbl" HorizontalOptions="Center" />
+        <Label x:Name="MessageLbl" HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</mopups:PopupPage>
