@@ -18,7 +18,7 @@ namespace NASA.Mobile
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
-                .Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                .Configuration.AddJsonFile("secrets.json", optional: true, reloadOnChange: true);
 
 
 #if DEBUG
