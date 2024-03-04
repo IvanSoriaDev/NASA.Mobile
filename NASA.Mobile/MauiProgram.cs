@@ -30,6 +30,7 @@ namespace NASA.Mobile
                 builder.Configuration.AddJsonFile(userSecretsFilePath, optional: true, reloadOnChange: true);
             }
 #endif
+            //ToDo the following methods could be replaced implementing extension methods.
             RegisterPagesViewModel(builder);
             RegisterServices(builder);
             return builder.Build();
@@ -46,6 +47,7 @@ namespace NASA.Mobile
             builder.Services.AddSingleton<IAlertService, AlertService>();
             builder.Services.AddSingleton<IHttpService, HttpService>();
             builder.Services.AddSingleton<IHttpHelper, HttpHelper>();
+            builder.Services.AddSingleton<IRestService, RestService>();
         }
     }
 }

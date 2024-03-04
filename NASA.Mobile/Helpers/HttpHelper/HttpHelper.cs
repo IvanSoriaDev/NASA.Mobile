@@ -44,7 +44,7 @@ namespace NASA.Mobile.Helpers
             }
         }
 
-        public IFlurlRequest GetRequest(string endpoint, object data, Dictionary<string, string>? headers = null) =>
-            _baseUrl.AppendPathSegment(endpoint).WithHeaders(headers);
+        public IFlurlRequest GetRequest(string endpoint, object data, Dictionary<string, string> parameters, Dictionary<string, string>? headers = null) =>
+            _baseUrl.AppendPathSegment(endpoint).WithHeaders(headers).SetQueryParams(parameters);
     }
 }

@@ -10,10 +10,15 @@ namespace NASA.Mobile.ViewModels
         [ObservableProperty]
         private ValidatableObject<string> _demo = new();
 
-        public MainViewModel(IConfiguration configuration, IAlertService alertService) : base(configuration, alertService)
+        public MainViewModel(IConfiguration configuration, IAlertService alertService, IRestService restService) : base(configuration, alertService, restService)
         {
             Demo.Value = "This is a demo";
             OnGet();
+        }
+
+        protected async override void Initialize()
+        {
+            var demo = await _restService.GetRovers(new DateTime(2017, 2, 27));
         }
 
         public void OnGet()
