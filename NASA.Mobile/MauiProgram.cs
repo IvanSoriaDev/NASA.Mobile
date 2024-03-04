@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Mopups.Hosting;
 using NASA.Mobile.Helpers;
 using NASA.Mobile.Services;
 using NASA.Mobile.ViewModels;
@@ -13,6 +15,8 @@ namespace NASA.Mobile
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
+                .ConfigureMopups()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

@@ -2,12 +2,56 @@
 <ContentPage
     x:Class="NASA.Mobile.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <ScrollView>
-        <VerticalStackLayout>
-            <Label Text="{Binding Demo.Value}" />
-        </VerticalStackLayout>
-    </ScrollView>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
+            <VerticalStackLayout
+                Padding="25,0"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                InputTransparent="{Binding IsBusy}">
+                <Picker
+                    x:Name="DatePicker"
+                    Title="Select a date"
+                    ItemsSource="{Binding PictureDatesList}"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged">
+                    <Picker.Behaviors>
+                        <toolkit:EventToCommandBehavior
+                            Command="{Binding ChangeDateCommand}"
+                            CommandParameter="{Binding Source={x:Reference DatePicker}, Path=SelectedIndex}"
+                            EventName="SelectedIndexChanged" />
+                    </Picker.Behaviors>
+                </Picker>
+                <CollectionView ItemsSource="{Binding MarsPhotos}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" Orientation="Vertical">
+                                <Image
+                                    Aspect="AspectFill"
+                                    HeightRequest="150"
+                                    Source="{Binding Img_Src}" />
+                                <Label FontSize="20" Text="{Binding Sol}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+            <BoxView
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="Gray"
+                IsVisible="{Binding IsBusy}"
+                Opacity="0.2" />
+
+            <ActivityIndicator
+                AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Color="Red" />
+        </AbsoluteLayout>
+    </ScrollView>
 </ContentPage>

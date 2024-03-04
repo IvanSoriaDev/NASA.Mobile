@@ -1,8 +1,10 @@
-﻿namespace NASA.Mobile.Models
+﻿using System.Collections;
+
+namespace NASA.Mobile.Models
 {
     public class MarsPhotoResponse
     {
-        public List<Photo> Photos { get; set; }
+        public IEnumerable<Photo> Photos { get; set; }
     }
     public class Photo
     {
