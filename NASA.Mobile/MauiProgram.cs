@@ -52,6 +52,8 @@ namespace NASA.Mobile
             builder.Services.AddSingleton<IHttpService, HttpService>();
             builder.Services.AddSingleton<IHttpHelper, HttpHelper>();
             builder.Services.AddSingleton<IRestService, RestService>();
+
+            builder.Services.AddSingleton<IImageService, Platforms.ImageService>();
         }
     }
 }
